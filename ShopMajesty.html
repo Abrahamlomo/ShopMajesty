@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopMajesty | Sell Your Products</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>ShopMajesty | Modern Storefront</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,1471 +13,512 @@
             --secondary: #3f37c9;
             --accent: #4cc9f0;
             --success: #4CAF50;
-            --success-dark: #3d8b40;
-            --warning: #FF9800;
             --danger: #F44336;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
-            --light-gray: #e9ecef;
             --border: #dee2e6;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(67, 97, 238, 0.08);
+            --transition: all 0.3s cubic-bezier(.4,0,.2,1);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f7fa;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             color: var(--dark);
-            line-height: 1.6;
+            margin: 0;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* FIXED HEADER STYLES */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px 0;
+            background: white;
+            box-shadow: var(--shadow);
+            padding: 0 0 0 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
         }
-
-        .header-container {
+        .nav {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
         }
-
         .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
-            color: white;
         }
-
         .logo i {
-            margin-right: 10px;
             color: var(--accent);
+            margin-right: 12px;
         }
-
-        nav ul {
+        .nav-links {
             display: flex;
-            list-style: none;
-            flex-wrap: wrap;
-            gap: 5px;
+            gap: 2rem;
         }
-
-        nav ul li {
-            margin: 0.3rem;
-        }
-
-        nav ul li a {
-            color: rgba(255, 255, 255, 0.9);
+        .nav-links a {
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            transition: var(--transition);
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-user {
             display: flex;
             align-items: center;
-            font-size: 1.05rem;
+            gap: 1.2rem;
         }
-
-        nav ul li a:hover, 
-        nav ul li a.active {
-            background: rgba(255,255,255,0.15);
+        .nav-user button, .nav-user .btn {
+            background: var(--primary);
             color: white;
-        }
-
-        nav ul li a i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
             border: none;
-            cursor: pointer;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
             font-size: 1rem;
-            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
         }
-
-        .btn:hover {
-            background: #38b6ff;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
+        .nav-user button:hover, .nav-user .btn:hover {
+            background: var(--primary-dark);
         }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-success {
-            background: var(--success);
-        }
-
-        .btn-success:hover {
-            background: var(--success-dark);
-        }
-
-        /* FIXED HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(rgba(67,97,238,0.08), rgba(76,201,240,0.08)), url('https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            min-height: 85vh;
+            min-height: 350px;
             display: flex;
             align-items: center;
-            color: white;
+            justify-content: center;
             text-align: center;
-            padding: 30px 0;
+            padding: 3rem 1rem 2rem 1rem;
         }
-
         .hero-content {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.8rem;
-            margin-bottom: 1.5rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.8rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-btn {
-            padding: 1.1rem 2.2rem;
-            font-size: 1.15rem;
-            min-width: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-btn i {
-            margin-right: 10px;
-        }
-
-        /* FIXED STATS SECTION */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.8rem;
-            margin: 4rem 0;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            padding: 2.5rem 2rem;
             box-shadow: var(--shadow);
-            padding: 1.8rem 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
         }
-
-        .stat-card:hover {
-            transform: translateY(-7px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-card i {
-            font-size: 3rem;
-            margin-bottom: 1.2rem;
+        .hero-content h1 {
+            font-size: 2.7rem;
             color: var(--primary);
-            opacity: 0.9;
+            margin-bottom: 1rem;
         }
-
-        .stat-value {
-            font-size: 2.6rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .stat-label {
+        .hero-content p {
             color: var(--gray);
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
-
-        /* FIXED HOW IT WORKS SECTION */
-        .how-it-works {
+        .hero-content .btn {
+            font-size: 1.1rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+        }
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
             background: white;
             border-radius: 16px;
             box-shadow: var(--shadow);
-            padding: 3rem 2rem;
-            margin-bottom: 4rem;
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
         }
-
-        .card-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            font-family: 'Poppins', sans-serif;
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid var(--light-gray);
-            text-align: center;
-            font-weight: 700;
+        .product-card:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(67,97,238,0.13);
         }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .step-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            background: rgba(67, 97, 238, 0.03);
+        .product-card img {
+            width: 100%;
+            max-width: 180px;
+            height: 180px;
+            object-fit: cover;
             border-radius: 12px;
-            transition: var(--transition);
-            border: 1px solid rgba(67, 97, 238, 0.1);
+            margin-bottom: 1rem;
         }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+        .product-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        .product-card p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .product-card .price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .product-card .btn {
+            width: 100%;
+            margin-top: auto;
+        }
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
             background: white;
-            border-color: rgba(67, 97, 238, 0.2);
+            box-shadow: -2px 0 16px rgba(67,97,238,0.13);
+            z-index: 200;
+            transition: right 0.35s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            flex-direction: column;
         }
-
-        .step-number {
-            font-size: 4rem;
-            font-weight: 800;
+        .cart-sidebar.open {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .cart-header h2 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 0;
+        }
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 1.5rem;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.1rem;
+        }
+        .cart-item span {
+            font-size: 1rem;
+        }
+        .cart-item .remove-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .cart-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background: #fafcff;
+        }
+        .cart-footer .btn {
+            width: 100%;
+        }
+        /* Auth Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 300;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(67,97,238,0.08);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.open {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            box-shadow: var(--shadow);
+            min-width: 320px;
+            max-width: 95vw;
+            margin: auto;
+            position: relative;
+        }
+        .modal-content h2 {
             color: var(--primary);
             margin-bottom: 1.2rem;
-            line-height: 1;
-            font-family: 'Poppins', sans-serif;
-            opacity: 0.9;
         }
-
-        .step-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            color: var(--dark);
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .modal-content input {
+            padding: 0.8rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .modal-content button[type="submit"] {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
             font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
         }
-
-        .step-description {
+        .modal-content button[type="submit"]:hover {
+            background: var(--primary-dark);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
             color: var(--gray);
-            font-size: 1.1rem;
-            line-height: 1.6;
+            cursor: pointer;
         }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-btn {
-                min-width: 240px;
-                padding: 1rem 1.8rem;
-            }
-            
-            .stat-value {
-                font-size: 2.3rem;
-            }
-            
-            .step-number {
-                font-size: 3.5rem;
-            }
+        .modal-message {
+            color: var(--danger);
+            margin-top: 0.5rem;
+            min-height: 1.2em;
         }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            
-            nav ul {
-                justify-content: center;
-                margin-top: 10px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .hero-buttons {
-                gap: 1.2rem;
-            }
-            
-            .hero-btn {
-                min-width: 100%;
-            }
-            
-            .steps-container {
-                gap: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.6rem;
-            }
-            
-            nav ul li a {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.95rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .step-title {
-                font-size: 1.3rem;
-            }
-            
-            .step-description {
-                font-size: 1rem;
-            }
+        @media (max-width: 700px) {
+            .nav, .main-content { padding: 0 1rem; }
+            .cart-sidebar { width: 100vw; max-width: 100vw; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="#" class="logo" id="home-link">
-                <i class="fas fa-crown"></i>
-                ShopMajesty
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#" id="home-nav" class="active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#" id="marketplace-nav"><i class="fas fa-shopping-cart"></i> Marketplace</a></li>
-                    <li><a href="#" id="dashboard-nav"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-                    <li><a href="#" id="help-nav"><i class="fas fa-question-circle"></i> Help</a></li>
-                </ul>
-            </nav>
-            <div>
-                <a href="#" class="btn" id="account-btn"><i class="fas fa-user"></i> My Account</a>
+        <div class="nav">
+            <a href="#" class="logo"><i class="fas fa-crown"></i> ShopMajesty</a>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#" id="nav-products">Products</a>
+                <a href="sell.html" id="nav-sell">Sell</a>
+            </div>
+            <div class="nav-user" id="nav-user">
+                <button id="cart-toggle"><i class="fas fa-shopping-cart"></i> Cart</button>
+                <button id="login-btn">Login</button>
             </div>
         </div>
     </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Home Page -->
-        <section id="home-page" class="page active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Start Selling Today</h1>
-                    <p>Join thousands of sellers on ShopMajesty. List your products, reach millions of customers, and earn money with our simple commission system.</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn hero-btn" id="become-seller-btn">
-                            <i class="fas fa-rocket"></i> Become a Seller
-                        </a>
-                        <a href="#" class="btn btn-outline hero-btn" id="browse-marketplace-btn">
-                            <i class="fas fa-search"></i> Browse Marketplace
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Stats Section -->
-            <div class="stats">
-                <div class="stat-card">
-                    <i class="fas fa-users"></i>
-                    <div class="stat-value">121,450+</div>
-                    <div class="stat-label">Active Sellers</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-box-open"></i>
-                    <div class="stat-value">245,780+</div>
-                    <div class="stat-label">Products Listed</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-shopping-bag"></i>
-                    <div class="stat-value">$818.2M+</div>
-                    <div class="stat-label">Total Sales</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <div class="stat-value">$51.8M+</div>
-                    <div class="stat-label">Seller Earnings</div>
-                </div>
-            </div>
-
-            <!-- How It Works Section -->
-            <div class="how-it-works">
-                <div class="card-title">How It Works</div>
-                <div class="steps-container">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Create Seller Account</h3>
-                        <p class="step-description">Sign up in minutes and set up your seller profile</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">List Your Products</h3>
-                        <p class="step-description">Add products with descriptions, prices, and images</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Sell to Customers</h3>
-                        <p class="step-description">Reach millions of customers worldwide</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Get Paid</h3>
-                        <p class="step-description">Receive earnings minus our 10% commission</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // Navigation functionality
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all nav items
-                document.querySelectorAll('nav a').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Add active class to clicked item
-                this.classList.add('active');
-            });
-        });
-
-        // Button functionality
-        document.getElementById('become-seller-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Become a Seller process started!');
-        });
-
-        document.getElementById('browse-marketplace-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#marketplace-nav').click();
-        });
-
-        document.getElementById('account-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('My Account page would open here');
-        });
-    </script>
-</body>
-</html>ss="stat-label">Total Earnings</div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-box"></i>
-                            <div class="stat-value" id="products-listed">0</div>
-                            <div class="stat-label">Products Listed</div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-chart-line"></i>
-                            <div class="stat-value" id="orders-completed">0</div>
-                            <div class="stat-label">Orders Completed</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">Recent Sales</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Commission</th>
-                                <th>Earnings</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recent-sales">
-                            <!-- Sales will be loaded here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Products Tab -->
-            <div class="tab-content" id="products-tab">
-                <div class="card">
-                    <div class="card-title">My Products</div>
-                    <div class="product-grid" id="my-products-grid">
-                        <!-- Products will be loaded here -->
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title">Add New Product</div>
-                    <form id="add-product-form">
-                        <div class="form-group">
-                            <label for="productName">Product Name</label>
-                            <input type="text" id="productName" class="form-control" placeholder="Enter product name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="productDescription">Description</label>
-                            <textarea id="productDescription" class="form-control" placeholder="Describe your product in detail" required></textarea>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="productPrice">Price ($)</label>
-                                <input type="number" id="productPrice" class="form-control" placeholder="0.00" min="0.01" step="0.01" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="productCommission">Commission Rate</label>
-                                <input type="text" id="productCommission" class="form-control" value="10%" disabled>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="productCategory">Category</label>
-                            <select id="productCategory" class="form-control" required>
-                                <option value="">Select a category</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="fashion">Fashion</option>
-                                <option value="home">Home & Kitchen</option>
-                                <option value="beauty">Beauty & Health</option>
-                                <option value="sports">Sports & Outdoors</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="productImage">Product Image</label>
-                            <input type="file" id="productImage" class="form-control" accept="image/*">
-                        </div>
-                        
-                        <button type="submit" class="btn btn-success" style="width: 100%;">
-                            <i class="fas fa-plus-circle"></i> Add Product
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Orders Tab -->
-            <div class="tab-content" id="orders-tab">
-                <div class="card">
-                    <div class="card-title">Recent Orders</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Product</th>
-                                <th>Customer</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="orders-table">
-                            <!-- Orders will be loaded here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Earnings Tab -->
-            <div class="tab-content" id="earnings-tab">
-                <div class="card">
-                    <div class="card-title">Earnings Overview</div>
-                    <div class="stats">
-                        <div class="stat-card">
-                            <i class="fas fa-wallet"></i>
-                            <div class="stat-value" id="available-earnings">$0.00</div>
-                            <div class="stat-label">Available Balance</div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-calendar"></i>
-                            <div class="stat-value" id="this-month">$0.00</div>
-                            <div class="stat-label">This Month</div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-chart-bar"></i>
-                            <div class="stat-value" id="all-time">$0.00</div>
-                            <div class="stat-label">All Time Earnings</div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-percentage"></i>
-                            <div class="stat-value">10%</div>
-                            <div class="stat-label">Commission Rate</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">Withdraw Earnings</div>
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
-                        <div>
-                            <h3 style="margin-bottom: 1rem;">Payment Methods</h3>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                                <div style="background: var(--light); padding: 1rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center;">
-                                    <i class="fab fa-paypal" style="font-size: 2rem; color: #003087;"></i>
-                                    <div>PayPal</div>
-                                </div>
-                                <div style="background: var(--light); padding: 1rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center;">
-                                    <i class="fas fa-university" style="font-size: 2rem; color: var(--primary);"></i>
-                                    <div>Bank Transfer</div>
-                                </div>
-                                <div style="background: var(--light); padding: 1rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center;">
-                                    <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #8e44ad;"></i>
-                                    <div>Mobile Money</div>
-                                </div>
-                                <div style="background: var(--light); padding: 1rem; border-radius: 8px; flex: 1; min-width: 120px; text-align: center;">
-                                    <i class="fas fa-credit-card" style="font-size: 2rem; color: #27ae60;"></i>
-                                    <div>Credit Card</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 style="margin-bottom: 1rem;">Request Withdrawal</h3>
-                            <div class="form-group">
-                                <label for="withdrawAmount">Amount ($)</label>
-                                <input type="number" id="withdrawAmount" class="form-control" placeholder="Enter amount" min="10" step="0.01">
-                            </div>
-                            <div class="form-group">
-                                <label for="paymentMethod">Payment Method</label>
-                                <select id="paymentMethod" class="form-control">
-                                    <option value="paypal">PayPal</option>
-                                    <option value="bank">Bank Transfer</option>
-                                    <option value="momo">Mobile Money</option>
-                                    <option value="card">Credit Card</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-success" style="width: 100%;" id="request-withdrawal">
-                                <i class="fas fa-money-check-alt"></i> Request Withdrawal
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Login/Register Modal -->
-        <div class="modal" id="auth-modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2 style="margin-bottom: 1.5rem; text-align: center;">Welcome to ShopMajesty</h2>
-                
-                <div class="tabs" style="margin-bottom: 1.5rem;">
-                    <div class="tab active" data-auth-tab="login">Login</div>
-                    <div class="tab" data-auth-tab="register">Register</div>
-                </div>
-                
-                <!-- Login Form -->
-                <form id="login-form" class="auth-form active">
-                    <div class="form-group">
-                        <label for="login-email">Email</label>
-                        <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
-                    </div>
-                    
-                    <div class="form-group" style="display: flex; align-items: center; margin-top: 1rem;">
-                        <input type="checkbox" id="remember" style="margin-right: 10px;">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Login</button>
-                </form>
-                
-                <!-- Register Form -->
-                <form id="register-form" class="auth-form">
-                    <div class="form-group">
-                        <label for="register-name">Full Name</label>
-                        <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="register-email">Email</label>
-                        <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="register-password">Password</label>
-                        <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="register-confirm">Confirm Password</label>
-                        <input type="password" id="register-confirm" class="form-control" placeholder="Confirm your password" required>
-                    </div>
-                    
-                    <div class="form-group" style="display: flex; align-items: center; margin-top: 1rem;">
-                        <input type="checkbox" id="seller-account" style="margin-right: 10px;" checked>
-                        <label for="seller-account">I want to become a seller</label>
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Create Account</button>
-                </form>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to ShopMajesty</h1>
+            <p>Your one-stop shop for the latest and greatest products. Enjoy a seamless shopping experience with secure checkout and fast delivery.</p>
+            <button class="btn" id="shop-now-btn">Shop Now</button>
+        </div>
+    </section>
+    <main class="main-content">
+        <h2 style="color:var(--primary);margin-bottom:1.5rem;">Featured Products</h2>
+        <div id="product-list" class="product-grid"></div>
+    </main>
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" id="cart-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-list"></div>
+        <div class="cart-footer">
+            <button class="btn" id="checkout-btn" style="display:none;">Proceed to Checkout</button>
+        </div>
+    </aside>
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="auth-close">&times;</button>
+            <h2 id="auth-title">Login</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <form id="register-form" style="display:none;">
+                <input type="text" id="register-name" placeholder="Name" required>
+                <input type="email" id="register-email" placeholder="Email" required>
+                <input type="password" id="register-password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="modal-message" id="auth-message"></div>
+            <div style="margin-top:1rem;text-align:center;">
+                <span id="toggle-auth">Don't have an account? <a href="#" id="show-register">Register</a></span>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ShopMajesty</h3>
-                    <p style="margin-bottom: 1rem; opacity: 0.8;">The premier marketplace for independent sellers. Start selling today and reach millions of customers worldwide.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>For Sellers</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">How to Sell</a></li>
-                        <li><a href="#">Commission Rates</a></li>
-                        <li><a href="#">Seller Policies</a></li>
-                        <li><a href="#">Payment Methods</a></li>
-                        <li><a href="#">Seller Success Stories</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping Information</a></li>
-                        <li><a href="#">Returns & Refunds</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Seller Agreement</a></li>
-                        <li><a href="#">Intellectual Property</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; <span id="current-year"></span> ShopMajesty. All rights reserved. | Platform commission: 10% on all sales</p>
-            </div>
-        </div>
-    </footer>
-
+    <script src="frontend/js/auth.js"></script>
+    <script src="frontend/js/products.js"></script>
+    <script src="frontend/js/cart.js"></script>
     <script>
-        // Data storage using localStorage
-        const DB = {
-            get: (key) => {
-                const data = localStorage.getItem(key);
-                return data ? JSON.parse(data) : null;
-            },
-            set: (key, value) => {
-                localStorage.setItem(key, JSON.stringify(value));
-            }
-        };
-
-        // Initialize data if not exists
-        if (!DB.get('products')) {
-            DB.set('products', []);
+    // UI State
+    function showUserNav() {
+        const user = getCurrentUser();
+        const navUser = document.getElementById('nav-user');
+        if (user) {
+            navUser.innerHTML = `
+                <button id="cart-toggle"><i class="fas fa-shopping-cart"></i> Cart</button>
+                <span>Hi, ${user.name}</span>
+                <button id="logout-btn">Logout</button>
+            `;
+            document.getElementById('logout-btn').onclick = () => { logoutUser(); location.reload(); };
+        } else {
+            navUser.innerHTML = `
+                <button id="cart-toggle"><i class="fas fa-shopping-cart"></i> Cart</button>
+                <button id="login-btn">Login</button>
+            `;
+            document.getElementById('login-btn').onclick = () => openAuthModal('login');
         }
-
-        if (!DB.get('users')) {
-            DB.set('users', []);
+        document.getElementById('cart-toggle').onclick = () => openCart();
+    }
+    // Auth Modal Logic
+    function openAuthModal(mode) {
+        document.getElementById('auth-modal').classList.add('open');
+        document.getElementById('auth-title').textContent = mode === 'register' ? 'Register' : 'Login';
+        document.getElementById('login-form').style.display = mode === 'register' ? 'none' : '';
+        document.getElementById('register-form').style.display = mode === 'register' ? '' : 'none';
+        document.getElementById('auth-message').textContent = '';
+        document.getElementById('toggle-auth').innerHTML = mode === 'register'
+            ? 'Already have an account? <a href="#" id="show-login">Login</a>'
+            : 'Don\'t have an account? <a href="#" id="show-register">Register</a>';
+        document.getElementById('show-login')?.addEventListener('click', e => { e.preventDefault(); openAuthModal('login'); });
+        document.getElementById('show-register')?.addEventListener('click', e => { e.preventDefault(); openAuthModal('register'); });
+    }
+    document.getElementById('auth-close').onclick = () => document.getElementById('auth-modal').classList.remove('open');
+    // Auth forms
+    document.getElementById('login-form').onsubmit = async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        const res = await loginUser(email, password);
+        document.getElementById('auth-message').textContent = res.message || (res.token ? 'Login successful!' : 'Login failed.');
+        if (res.token) {
+            document.getElementById('auth-modal').classList.remove('open');
+            showUserNav();
+            renderProducts('product-list');
+            renderCart('cart-list');
         }
-
-        if (!DB.get('currentUser')) {
-            DB.set('currentUser', null);
+    };
+    document.getElementById('register-form').onsubmit = async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('register-name').value;
+        const email = document.getElementById('register-email').value;
+        const password = document.getElementById('register-password').value;
+        const res = await registerUser(name, email, password);
+        document.getElementById('auth-message').textContent = res.message || (res.token ? 'Registration successful!' : 'Registration failed.');
+        if (res.message && res.message.toLowerCase().includes('success')) {
+            setTimeout(() => openAuthModal('login'), 1200);
         }
-
-        if (!DB.get('orders')) {
-            DB.set('orders', []);
+    };
+    // Hero CTA
+    document.getElementById('shop-now-btn').onclick = () => {
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+            mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
-        // Sample products for demo
-        const sampleProducts = [
-            {
-                id: 1,
-                name: "Wireless Headphones",
-                description: "Premium wireless headphones with noise cancellation and 30-hour battery life",
-                price: 89.99,
-                category: "electronics",
-                image: "headphones",
-                sellerId: 1
-            },
-            {
-                id: 2,
-                name: "Smart Watch Series 5",
-                description: "Latest smart watch with health monitoring and GPS",
-                price: 199.99,
-                category: "electronics",
-                image: "watch",
-                sellerId: 1
-            },
-            {
-                id: 3,
-                name: "Leather Wallet",
-                description: "Genuine leather wallet with multiple card slots and cash compartment",
-                price: 45.00,
-                category: "fashion",
-                image: "wallet",
-                sellerId: 2
-            },
-            {
-                id: 4,
-                name: "Fitness Tracker",
-                description: "Waterproof fitness tracker with heart rate monitor and sleep tracking",
-                price: 59.99,
-                category: "sports",
-                image: "running",
-                sellerId: 2
-            }
-        ];
-
-        // Initialize sample products if none exist
-        if (DB.get('products').length === 0) {
-            DB.set('products', sampleProducts);
-        }
-
-        // Sample users for demo
-        const sampleUsers = [
-            {
-                id: 1,
-                name: "John Seller",
-                email: "john@example.com",
-                password: "password123",
-                role: "seller",
-                balance: 325.50
-            },
-            {
-                id: 2,
-                name: "Sarah Vendor",
-                email: "sarah@example.com",
-                password: "password123",
-                role: "seller",
-                balance: 182.75
-            }
-        ];
-
-        // Initialize sample users if none exist
-        if (DB.get('users').length === 0) {
-            DB.set('users', sampleUsers);
-            DB.set('currentUser', sampleUsers[0]);
-        }
-
-        // Sample orders for demo
-        const sampleOrders = [
-            {
-                id: "MP-7842",
-                productId: 1,
-                productName: "Wireless Headphones",
-                customer: "Alex Johnson",
-                price: 89.99,
-                commission: 8.99,
-                earnings: 81.00,
-                status: "completed",
-                date: "2023-10-15"
-            },
-            {
-                id: "MP-7819",
-                productId: 2,
-                productName: "Smart Watch Series 5",
-                customer: "Michael Brown",
-                price: 199.99,
-                commission: 19.99,
-                earnings: 180.00,
-                status: "completed",
-                date: "2023-10-12"
-            },
-            {
-                id: "MP-7793",
-                productId: 3,
-                productName: "Leather Wallet",
-                customer: "Emma Davis",
-                price: 45.00,
-                commission: 4.50,
-                earnings: 40.50,
-                status: "processing",
-                date: "2023-10-10"
-            }
-        ];
-
-        // Initialize sample orders if none exist
-        if (DB.get('orders').length === 0) {
-            DB.set('orders', sampleOrders);
-        }
-
-        // DOM Elements
-        const pages = document.querySelectorAll('.page');
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const authTabs = document.querySelectorAll('[data-auth-tab]');
-        const authForms = document.querySelectorAll('.auth-form');
-        const modal = document.getElementById('auth-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const toast = document.getElementById('toast');
-        const addProductForm = document.getElementById('add-product-form');
-        const marketplaceGrid = document.getElementById('marketplace-grid');
-        const myProductsGrid = document.getElementById('my-products-grid');
-        const recentSales = document.getElementById('recent-sales');
-        const ordersTable = document.getElementById('orders-table');
-        const requestWithdrawalBtn = document.getElementById('request-withdrawal');
-        const currentYearSpan = document.getElementById('current-year');
-
-        // Set current year in footer
-        currentYearSpan.textContent = new Date().getFullYear();
-
-        // Navigation
-        document.getElementById('home-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            showPage('home-page');
-        });
-
-        document.getElementById('home-nav').addEventListener('click', (e) => {
-            e.preventDefault();
-            showPage('home-page');
-        });
-
-        document.getElementById('marketplace-nav').addEventListener('click', (e) => {
-            e.preventDefault();
-            showPage('marketplace-page');
-            loadMarketplace();
-        });
-
-        document.getElementById('dashboard-nav').addEventListener('click', (e) => {
-            e.preventDefault();
-            if (!DB.get('currentUser')) {
-                showToast('Please log in to access the dashboard', 'error');
-                showAuthModal();
-                return;
-            }
-            showPage('dashboard-page');
-            loadDashboard();
-        });
-
-        document.getElementById('become-seller-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            showAuthModal();
-        });
-
-        document.getElementById('browse-marketplace-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            showPage('marketplace-page');
-            loadMarketplace();
-        });
-
-        document.getElementById('account-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            if (DB.get('currentUser')) {
-                showPage('dashboard-page');
-                loadDashboard();
-            } else {
-                showAuthModal();
-            }
-        });
-
-        // Show page function
-        function showPage(pageId) {
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        // Tab functionality
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-tab');
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
-            });
-        });
-
-        // Auth tab functionality
-        authTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabId = tab.getAttribute('data-auth-tab');
-                
-                authTabs.forEach(t => t.classList.remove('active'));
-                authForms.forEach(form => form.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(`${tabId}-form`).classList.add('active');
-            });
-        });
-
-        // Modal functionality
-        function showAuthModal() {
-            modal.style.display = 'flex';
-        }
-
-        function closeAuthModal() {
-            modal.style.display = 'none';
-        }
-
-        closeModal.addEventListener('click', closeAuthModal);
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeAuthModal();
-            }
-        });
-
-        // Toast functionality
-        function showToast(message, type) {
-            toast.textContent = message;
-            toast.className = `toast show ${type}`;
-            
-            setTimeout(() => {
-                toast.className = 'toast';
-            }, 3000);
-        }
-
-        // Login functionality
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            
-            const users = DB.get('users');
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                DB.set('currentUser', user);
-                closeAuthModal();
-                showToast(`Welcome back, ${user.name}`, 'success');
-                document.getElementById('account-btn').innerHTML = `<i class="fas fa-user"></i> ${user.name}`;
-                
-                // If user is seller, redirect to dashboard
-                if (user.role === 'seller') {
-                    showPage('dashboard-page');
-                    loadDashboard();
-                } else {
-                    showPage('marketplace-page');
-                    loadMarketplace();
+    };
+    // Product grid
+    window.renderProducts = async function(containerId) {
+        await renderProducts(containerId);
+        // Re-attach add to cart logic for new cards
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.onclick = async () => {
+                if (!getCurrentUser()) {
+                    openAuthModal('login');
+                    return;
                 }
-            } else {
-                showToast('Invalid email or password', 'error');
-            }
-        });
-
-        // Registration functionality
-        document.getElementById('register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const confirm = document.getElementById('register-confirm').value;
-            const isSeller = document.getElementById('seller-account').checked;
-            
-            if (password !== confirm) {
-                showToast('Passwords do not match', 'error');
-                return;
-            }
-            
-            const users = DB.get('users');
-            
-            // Check if email already exists
-            if (users.some(u => u.email === email)) {
-                showToast('Email already registered', 'error');
-                return;
-            }
-            
-            // Create new user
-            const newUser = {
-                id: users.length + 1,
-                name,
-                email,
-                password,
-                role: isSeller ? 'seller' : 'buyer',
-                balance: 0
+                await addToCart(btn.getAttribute('data-id'), 1);
+                renderCart('cart-list');
+                openCart();
             };
-            
-            users.push(newUser);
-            DB.set('users', users);
-            DB.set('currentUser', newUser);
-            
-            closeAuthModal();
-            showToast(`Account created successfully! Welcome to ShopMajesty, ${name}`, 'success');
-            document.getElementById('account-btn').innerHTML = `<i class="fas fa-user"></i> ${name}`;
-            
-            // If user registered as seller, redirect to dashboard
-            if (isSeller) {
-                showPage('dashboard-page');
-                loadDashboard();
-            } else {
-                showPage('marketplace-page');
-                loadMarketplace();
-            }
         });
-
-        // Load marketplace products
-        function loadMarketplace() {
-            const products = DB.get('products');
-            marketplaceGrid.innerHTML = '';
-            
-            if (products.length === 0) {
-                marketplaceGrid.innerHTML = '<div class="card" style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p>No products available at the moment. Check back soon!</p></div>';
+    };
+    // Cart Sidebar Logic
+    function openCart() {
+        document.getElementById('cart-sidebar').classList.add('open');
+        renderCart('cart-list');
+        updateCheckoutBtn();
+    }
+    document.getElementById('cart-close').onclick = () => document.getElementById('cart-sidebar').classList.remove('open');
+    // Cart rendering
+    window.renderCart = async function(containerId) {
+        await window.fetchCart().then(cart => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            if (!cart.items || cart.items.length === 0) {
+                container.innerHTML = '<p>Your cart is empty.</p>';
+                document.getElementById('checkout-btn').style.display = 'none';
                 return;
             }
-            
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <i class="fas fa-${product.image}"></i>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-title">${product.name}</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <div class="product-meta">
-                            <span><i class="fas fa-tag"></i> ${product.category}</span>
-                            <span><i class="fas fa-store"></i> Seller ${product.sellerId}</span>
-                        </div>
-                        <button class="btn add-to-cart" style="width: 100%; margin-top: 1rem;" data-id="${product.id}">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
-                    </div>
+            cart.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <span>${item.product.name}</span>
+                    <span>Qty: ${item.quantity}</span>
+                    <span>$${item.product.price.toFixed(2)}</span>
+                    <button class="remove-btn" data-id="${item.product._id}"><i class="fas fa-trash"></i></button>
                 `;
-                marketplaceGrid.appendChild(productCard);
+                container.appendChild(div);
             });
-            
-            // Add event listeners to Add to Cart buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = this.getAttribute('data-id');
-                    const product = DB.get('products').find(p => p.id == productId);
-                    if (product) {
-                        showToast(`${product.name} added to cart!`, 'success');
-                    }
-                });
-            });
-        }
-
-        // Add product functionality
-        if (addProductForm) {
-            addProductForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const currentUser = DB.get('currentUser');
-                
-                if (!currentUser || currentUser.role !== 'seller') {
-                    showToast('You must be a seller to add products', 'error');
-                    return;
-                }
-                
-                const name = document.getElementById('productName').value;
-                const description = document.getElementById('productDescription').value;
-                const price = parseFloat(document.getElementById('productPrice').value);
-                const category = document.getElementById('productCategory').value;
-                
-                if (!name || !description || !price || !category) {
-                    showToast('Please fill in all required fields', 'error');
-                    return;
-                }
-                
-                const products = DB.get('products');
-                const newProduct = {
-                    id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
-                    name,
-                    description,
-                    price,
-                    category,
-                    image: 'box', // Default image
-                    sellerId: currentUser.id
+            // Remove logic
+            container.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.onclick = async () => {
+                    await window.removeFromCart(btn.getAttribute('data-id'));
+                    renderCart(containerId);
+                    updateCheckoutBtn();
                 };
-                
-                products.push(newProduct);
-                DB.set('products', products);
-                
-                addProductForm.reset();
-                showToast('Product added successfully!', 'success');
-                
-                // Refresh products list
-                loadMyProducts();
             });
-        }
-
-        // Load seller's products
-        function loadMyProducts() {
-            const currentUser = DB.get('currentUser');
-            if (!currentUser) return;
-            
-            const products = DB.get('products').filter(p => p.sellerId === currentUser.id);
-            myProductsGrid.innerHTML = '';
-            
-            if (products.length === 0) {
-                myProductsGrid.innerHTML = '<div class="card" style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p>You haven\'t added any products yet.</p></div>';
-                return;
-            }
-            
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <i class="fas fa-${product.image}"></i>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-title">${product.name}</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <div class="product-meta">
-                            <span><i class="fas fa-tag"></i> ${product.category}</span>
-                            <span><i class="fas fa-chart-line"></i> ${Math.floor(Math.random() * 20)} sold</span>
-                        </div>
-                    </div>
-                `;
-                myProductsGrid.appendChild(productCard);
-            });
-            
-            // Update products listed count
-            document.getElementById('products-listed').textContent = products.length;
-        }
-
-        // Load recent sales
-        function loadRecentSales() {
-            const currentUser = DB.get('currentUser');
-            if (!currentUser) return;
-            
-            const orders = DB.get('orders').filter(o => {
-                const product = DB.get('products').find(p => p.id === o.productId);
-                return product && product.sellerId === currentUser.id;
-            });
-            
-            recentSales.innerHTML = '';
-            
-            if (orders.length === 0) {
-                recentSales.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 2rem;">No sales yet. Start selling to see your transactions here!</td></tr>`;
-                return;
-            }
-            
-            orders.forEach(order => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${order.id}</td>
-                    <td>${order.productName}</td>
-                    <td>$${order.price.toFixed(2)}</td>
-                    <td>$${order.commission.toFixed(2)} (10%)</td>
-                    <td>$${order.earnings.toFixed(2)}</td>
-                    <td><span class="badge ${order.status === 'completed' ? 'badge-success' : order.status === 'processing' ? 'badge-warning' : 'badge-danger'}">${order.status}</span></td>
-                `;
-                recentSales.appendChild(row);
-            });
-            
-            // Update orders completed count
-            const completedOrders = orders.filter(o => o.status === 'completed').length;
-            document.getElementById('orders-completed').textContent = completedOrders;
-            
-            // Update total sales and earnings
-            const totalSales = orders.reduce((sum, order) => sum + order.price, 0);
-            const totalEarnings = orders.reduce((sum, order) => sum + order.earnings, 0);
-            
-            document.getElementById('total-sales').textContent = `$${totalSales.toFixed(2)}`;
-            document.getElementById('total-earnings').textContent = `$${totalEarnings.toFixed(2)}`;
-        }
-
-        // Load orders
-        function loadOrders() {
-            const currentUser = DB.get('currentUser');
-            if (!currentUser) return;
-            
-            const orders = DB.get('orders').filter(o => {
-                const product = DB.get('products').find(p => p.id === o.productId);
-                return product && product.sellerId === currentUser.id;
-            });
-            
-            ordersTable.innerHTML = '';
-            
-            if (orders.length === 0) {
-                ordersTable.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 2rem;">No orders yet. Your products will appear here when purchased!</td></tr>`;
-                return;
-            }
-            
-            orders.forEach(order => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${order.id}</td>
-                    <td>${order.productName}</td>
-                    <td>${order.customer}</td>
-                    <td>$${order.price.toFixed(2)}</td>
-                    <td><span class="badge ${order.status === 'completed' ? 'badge-success' : order.status === 'processing' ? 'badge-warning' : 'badge-danger'}">${order.status}</span></td>
-                `;
-                ordersTable.appendChild(row);
-            });
-        }
-
-        // Load earnings
-        function loadEarnings() {
-            const currentUser = DB.get('currentUser');
-            if (!currentUser) return;
-            
-            document.getElementById('available-earnings').textContent = `$${currentUser.balance.toFixed(2)}`;
-            
-            // This month earnings (demo)
-            const thisMonth = currentUser.balance * 0.3;
-            document.getElementById('this-month').textContent = `$${thisMonth.toFixed(2)}`;
-            
-            // All time earnings
-            const orders = DB.get('orders').filter(o => {
-                const product = DB.get('products').find(p => p.id === o.productId);
-                return product && product.sellerId === currentUser.id;
-            });
-            
-            const allTimeEarnings = orders.reduce((sum, order) => sum + order.earnings, 0);
-            document.getElementById('all-time').textContent = `$${allTimeEarnings.toFixed(2)}`;
-        }
-
-        // Load dashboard
-        function loadDashboard() {
-            loadMyProducts();
-            loadRecentSales();
-            loadOrders();
-            loadEarnings();
-        }
-
-        // Withdrawal request
-        if (requestWithdrawalBtn) {
-            requestWithdrawalBtn.addEventListener('click', () => {
-                const amount = parseFloat(document.getElementById('withdrawAmount').value);
-                const method = document.getElementById('paymentMethod').value;
-                const currentUser = DB.get('currentUser');
-                
-                if (!amount || isNaN(amount)) {
-                    showToast('Please enter a valid amount', 'error');
-                    return;
-                }
-                
-                if (amount < 10) {
-                    showToast('Minimum withdrawal amount is $10', 'error');
-                    return;
-                }
-                
-                if (amount > currentUser.balance) {
-                    showToast('Insufficient balance', 'error');
-                    return;
-                }
-                
-                // Update user balance
-                const users = DB.get('users');
-                const userIndex = users.findIndex(u => u.id === currentUser.id);
-                
-                if (userIndex !== -1) {
-                    users[userIndex].balance -= amount;
-                    DB.set('users', users);
-                    DB.set('currentUser', users[userIndex]);
-                    
-                    showToast(`Withdrawal request for $${amount.toFixed(2)} via ${method} submitted successfully!`, 'success');
-                    document.getElementById('withdrawAmount').value = '';
-                    loadEarnings();
-                }
-            });
-        }
-
-        // Initialize the app
-        function initApp() {
-            // Show home page by default
-            showPage('home-page');
-            
-            // If user is logged in, update UI
-            const currentUser = DB.get('currentUser');
-            if (currentUser) {
-                document.getElementById('account-btn').innerHTML = `<i class="fas fa-user"></i> ${currentUser.name}`;
-            }
-        }
-
-        // Start the app
-        initApp();
+            document.getElementById('checkout-btn').style.display = cart.items.length > 0 ? '' : 'none';
+        });
+    };
+    // Checkout button
+    document.getElementById('checkout-btn').onclick = function() {
+        window.location.href = 'payment%20method.html'; // Use encoded space for file navigation
+    };
+    // Update checkout button
+    async function updateCheckoutBtn() {
+        const cart = await window.fetchCart();
+        document.getElementById('checkout-btn').style.display = (cart.items && cart.items.length > 0) ? '' : 'none';
+    }
+    // On load
+    window.onload = () => {
+        showUserNav();
+        renderProducts('product-list');
+        renderCart('cart-list');
+    };
     </script>
-        <!-- ... (your existing HTML) ... -->
-
-    <!-- Link to external JavaScript file -->
-    <script src="work.js"></script>
 </body>
 </html>

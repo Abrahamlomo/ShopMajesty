@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell on ShopMajesty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            color: #22223b;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(67, 97, 238, 0.10);
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        h1 {
+            color: #3f37c9;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        input, textarea {
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background: #4361ee;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #3a56d4;
+        }
+        .back-link {
+            display: block;
+            margin-bottom: 1.5rem;
+            color: #4361ee;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .form-message {
+            color: #4CAF50;
+            text-align: center;
+            min-height: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="ShopMajesty.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Sell a Product</h1>
+        <form id="sell-form">
+            <input type="text" id="product-name" placeholder="Product Name" required>
+            <input type="number" id="product-price" placeholder="Price (USD)" min="0" step="0.01" required>
+            <textarea id="product-desc" placeholder="Description" required></textarea>
+            <input type="file" id="product-image" accept="image/*" required>
+            <button type="submit">List Product</button>
+        </form>
+        <div class="form-message" id="form-message"></div>
+    </div>
+    <script>
+    document.getElementById('sell-form').onsubmit = async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData();
+        formData.append('name', document.getElementById('product-name').value);
+        formData.append('price', document.getElementById('product-price').value);
+        formData.append('description', document.getElementById('product-desc').value);
+        const imageFile = document.getElementById('product-image').files[0];
+        if (imageFile) formData.append('image', imageFile);
+        try {
+            const res = await fetch('http://localhost:5000/api/products', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await res.json();
+            if (res.ok) {
+                document.getElementById('form-message').style.color = '#4CAF50';
+                document.getElementById('form-message').textContent = data.message || 'Product listed!';
+                form.reset();
+            } else {
+                document.getElementById('form-message').style.color = '#F44336';
+                document.getElementById('form-message').textContent = data.message || 'Error listing product.';
+            }
+        } catch (err) {
+            document.getElementById('form-message').style.color = '#F44336';
+            document.getElementById('form-message').textContent = 'Server error.';
+        }
+    };
+    </script>
+</body>
+</html> 
